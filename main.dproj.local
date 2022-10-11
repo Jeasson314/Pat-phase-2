@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/10/10 08:22:07.630.pas,C:\Users\James Easson\Documents\RAD Studio\Projects\Unit4.pas=C:\Users\James Easson\Documents\RAD Studio\Projects\pat phase 2\Unit4.pas</Transaction>
+    <Transaction>2022/10/10 08:22:07.630.dfm,C:\Users\James Easson\Documents\RAD Studio\Projects\Unit4.dfm=C:\Users\James Easson\Documents\RAD Studio\Projects\pat phase 2\Unit4.dfm</Transaction>
+    <Transaction>2022/10/10 10:09:28.363.pas,C:\Users\James Easson\Documents\RAD Studio\Projects\Unit5.pas=C:\Users\James Easson\Documents\RAD Studio\Projects\pat phase 2\dmChess_u.pas</Transaction>
+    <Transaction>2022/10/10 10:09:28.363.dfm,C:\Users\James Easson\Documents\RAD Studio\Projects\Unit5.dfm=C:\Users\James Easson\Documents\RAD Studio\Projects\pat phase 2\dmChess_u.dfm</Transaction>
+    <Transaction>2022/10/10 13:06:30.363.dproj,C:\Users\James Easson\Documents\RAD Studio\Projects\Project2.dproj=C:\Users\James Easson\Documents\RAD Studio\Projects\pat phase 2\main.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
