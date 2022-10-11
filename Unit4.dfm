@@ -12,6 +12,7 @@ object Form4: TForm4
   Font.Style = []
   OldCreateOrder = False
   Position = poDesigned
+  OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
   object PageControl1: TPageControl
@@ -31,17 +32,31 @@ object Form4: TForm4
     object TabSheet2: TTabSheet
       Caption = 'Tournament Organisers'
       ImageIndex = 1
-      ExplicitLeft = 0
+      ExplicitLeft = 8
       ExplicitTop = 50
       object Image1: TImage
         Left = 695
-        Top = 0
+        Top = 3
         Width = 206
         Height = 201
       end
+      object Label2: TLabel
+        Left = 3
+        Top = 234
+        Width = 64
+        Height = 13
+        Caption = 'Match results'
+      end
+      object Label1: TLabel
+        Left = 3
+        Top = 3
+        Width = 81
+        Height = 18
+        Caption = 'Contestant list'
+      end
       object DBGrid1: TDBGrid
         Left = 0
-        Top = 0
+        Top = 27
         Width = 689
         Height = 201
         DataSource = dmchess.Dsregest
@@ -115,8 +130,8 @@ object Form4: TForm4
       end
       object DBGrid3: TDBGrid
         Left = 0
-        Top = 223
-        Width = 753
+        Top = 253
+        Width = 758
         Height = 194
         DataSource = dmchess.Dsuser
         TabOrder = 2
@@ -164,6 +179,7 @@ object Form4: TForm4
           item
             Expanded = False
             FieldName = 'scores_black'
+            Width = 70
             Visible = True
           end
           item
