@@ -3,7 +3,7 @@ object Form4: TForm4
   Top = 257
   Caption = 'Form4'
   ClientHeight = 606
-  ClientWidth = 920
+  ClientWidth = 913
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,25 +15,28 @@ object Form4: TForm4
   OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
+  object Label3: TLabel
+    Left = 32
+    Top = 496
+    Width = 31
+    Height = 13
+    Caption = 'Label3'
+  end
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 921
+    Width = 1050
     Height = 609
     ActivePage = TabSheet2
     TabHeight = 40
     TabOrder = 0
-    TabWidth = 450
+    TabWidth = 480
     object TabSheet1: TTabSheet
       Caption = 'Tournament Participant'
-      ExplicitWidth = 897
-      ExplicitHeight = 511
     end
     object TabSheet2: TTabSheet
       Caption = 'Tournament Organisers'
       ImageIndex = 1
-      ExplicitLeft = 8
-      ExplicitTop = 50
       object Image1: TImage
         Left = 695
         Top = 3
@@ -50,13 +53,20 @@ object Form4: TForm4
       object Label1: TLabel
         Left = 3
         Top = 3
-        Width = 81
-        Height = 18
+        Width = 70
+        Height = 13
         Caption = 'Contestant list'
       end
-      object DBGrid1: TDBGrid
+      object Label4: TLabel
+        Left = 16
+        Top = 450
+        Width = 79
+        Height = 13
+        Caption = 'Organizer Login:'
+      end
+      object DBContestants: TDBGrid
         Left = 0
-        Top = 27
+        Top = 15
         Width = 689
         Height = 201
         DataSource = dmchess.Dsregest
@@ -121,14 +131,14 @@ object Form4: TForm4
           end>
       end
       object DBNavigator1: TDBNavigator
-        Left = 176
-        Top = 483
+        Left = 200
+        Top = 222
         Width = 240
         Height = 25
         DataSource = dmchess.Dsregest
         TabOrder = 1
       end
-      object DBGrid3: TDBGrid
+      object DBMatch: TDBGrid
         Left = 0
         Top = 253
         Width = 758
@@ -187,6 +197,38 @@ object Form4: TForm4
             FieldName = 'board_number'
             Visible = True
           end>
+      end
+      object Firstname_login: TEdit
+        Left = 3
+        Top = 464
+        Width = 134
+        Height = 27
+        TabOrder = 3
+      end
+      object password_login: TEdit
+        Left = 3
+        Top = 497
+        Width = 134
+        Height = 28
+        TabOrder = 4
+      end
+      object Button1: TButton
+        Left = 3
+        Top = 531
+        Width = 64
+        Height = 25
+        Caption = 'Log in'
+        TabOrder = 5
+        OnClick = Button1Click
+      end
+      object Button2: TButton
+        Left = 73
+        Top = 531
+        Width = 64
+        Height = 25
+        Caption = 'Create new'
+        TabOrder = 6
+        OnClick = Button2Click
       end
     end
   end
