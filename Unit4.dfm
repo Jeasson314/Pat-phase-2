@@ -22,6 +22,13 @@ object Form4: TForm4
     Height = 13
     Caption = 'Label3'
   end
+  object DBNavContestant: TDBNavigator
+    Left = 224
+    Top = 268
+    Width = 240
+    Height = 25
+    TabOrder = 0
+  end
   object PageControl1: TPageControl
     Left = 0
     Top = 0
@@ -29,7 +36,7 @@ object Form4: TForm4
     Height = 609
     ActivePage = TabSheet2
     TabHeight = 40
-    TabOrder = 0
+    TabOrder = 1
     TabWidth = 480
     object TabSheet1: TTabSheet
       Caption = 'Tournament Participant'
@@ -130,21 +137,13 @@ object Form4: TForm4
             Visible = True
           end>
       end
-      object DBNavigator1: TDBNavigator
-        Left = 200
-        Top = 222
-        Width = 240
-        Height = 25
-        DataSource = dmchess.Dsregest
-        TabOrder = 1
-      end
       object DBMatch: TDBGrid
         Left = 0
         Top = 253
         Width = 758
         Height = 194
         DataSource = dmchess.Dsuser
-        TabOrder = 2
+        TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
@@ -152,14 +151,16 @@ object Form4: TForm4
         TitleFont.Style = []
         Columns = <
           item
+            Alignment = taLeftJustify
             Expanded = False
             FieldName = 'ID'
+            Width = 25
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'first_name_white'
-            Width = 110
+            Width = 100
             Visible = True
           end
           item
@@ -171,13 +172,13 @@ object Form4: TForm4
           item
             Expanded = False
             FieldName = 'scores_white'
-            Width = 70
+            Width = 65
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'first_name_black'
-            Width = 110
+            Width = 90
             Visible = True
           end
           item
@@ -189,12 +190,16 @@ object Form4: TForm4
           item
             Expanded = False
             FieldName = 'scores_black'
-            Width = 70
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'board_number'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'round_number'
             Visible = True
           end>
       end
@@ -203,14 +208,14 @@ object Form4: TForm4
         Top = 469
         Width = 134
         Height = 21
-        TabOrder = 3
+        TabOrder = 2
       end
       object password_login: TEdit
         Left = 3
         Top = 497
         Width = 134
         Height = 21
-        TabOrder = 4
+        TabOrder = 3
       end
       object btnUsername: TButton
         Left = 3
@@ -218,7 +223,7 @@ object Form4: TForm4
         Width = 64
         Height = 25
         Caption = 'Log in'
-        TabOrder = 5
+        TabOrder = 4
         OnClick = btnUsernameClick
       end
       object btnCreate: TButton
@@ -227,8 +232,16 @@ object Form4: TForm4
         Width = 64
         Height = 25
         Caption = 'Create new'
-        TabOrder = 6
+        TabOrder = 5
         OnClick = btnCreateClick
+      end
+      object DBNav: TDBNavigator
+        Left = 232
+        Top = 222
+        Width = 240
+        Height = 25
+        DataSource = dmchess.Dsregest
+        TabOrder = 6
       end
     end
   end

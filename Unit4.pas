@@ -8,21 +8,22 @@ uses
 
 type
   TForm4 = class(TForm)
+    Label3: TLabel;
+    DBNavContestant: TDBNavigator;
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
-    DBContestants: TDBGrid;
-    DBNavigator1: TDBNavigator;
     Image1: TImage;
-    DBMatch: TDBGrid;
     Label2: TLabel;
     Label1: TLabel;
+    Label4: TLabel;
+    DBContestants: TDBGrid;
+    DBMatch: TDBGrid;
     Firstname_login: TEdit;
     password_login: TEdit;
     btnUsername: TButton;
-    Label3: TLabel;
-    Label4: TLabel;
     btnCreate: TButton;
+    DBNav: TDBNavigator;
     procedure FormActivate(Sender: TObject);
     procedure btnUsernameClick(Sender: TObject);
     procedure btnCreateClick(Sender: TObject);
@@ -40,47 +41,86 @@ implementation
 {$R *.dfm}
 
 procedure TForm4.btnUsernameClick(Sender: TObject);
-var storage:textfile;
-    loginusername:string;
+var loginusername,vtext:string;
     loop:integer;
+    username_check:boolean;
 begin
-assignfile(storage,'.\textfiles\username.txt');
 password:=password_login.Text;
 loginusername:=Firstname_login.Text;
-reset(storage);
 encryption(password);
-while not eof do
-if  
+username_check:=false;
+with dmChess do
+  begin
+  tblOrganiser.First;
+  while (not tblorganiser.Eof) AND (username_check =false) do
+  begin
+    if tblOrganiser['username']=loginusername then
+    begin
+      username_check:=true;
+      if tblorganiser['password']=result then
+      begin
+       DBMatch.Enabled:=true;
+       DBContestants.enabled:=true;
+       btnCreate.Enabled:=true;
+       DbNav.Enabled:=true;
+      showmessage('Logged in');
+      end
+       else
+       showmessage('Password is incorrect')
+    end
+  else tblorganiser.Next;
+  end;
+
+  end;
 
 end;
+
 
 procedure TForm4.btnCreateClick(Sender: TObject);
 var storage:textfile;
     username:string;
+    usernamecheck:boolean;
 begin
-username:=inputbox('Username','Please input username',' ');
-password:=inputbox('Password','Please input password',' ');
+username:=inputbox('Username','Please input username','');
+usernamecheck:=false;
+with dmChess do
+  begin
+  tblOrganiser.First;
+  while (not tblorganiser.Eof) AND (usernamecheck =false) do
+  begin
+    if tblOrganiser['username']=username then
+    begin
+      showmessage('User already exist. Please use another');
+      usernamecheck:=true;
+      exit;
+    end
+  else tblorganiser.Next;
+  end;
+
+  end;
+
+password:=inputbox('Password','Please input password','');
 assignfile(storage,'.\textfiles\username.txt');
 append(storage);
 encryption(password);
 writeln(storage,username+','+result);
-closefile(storage);
-
+dmChess.tblOrganiser.Insert;
+dmChess.tblOrganiser['username']:=username;
+dmChess.tblOrganiser['password']:=result;
+dmChess.tblOrganiser.Post;
 end;
 
 
 procedure TForm4.encryption(password: string);
 var vlength,loop,asciiNum:integer;
-    Npassword,letter:string;
+    Npassword:string;
 begin
   vlength:=length(password);
 
   for loop := 1 to vlength do
     begin
     asciiNum :=ord(password[loop]);
-    showmessage(inttostr(asciiNum));
     Npassword:=Npassword +chr(asciiNum+vlength);
-    showmessage(Npassword);
     end;
  result:=Npassword;
 end;
@@ -93,6 +133,8 @@ begin
 label1.BringToFront;
 DBMatch.Enabled:=false;
 DBContestants.Enabled:=false;
+btncreate.Enabled:=false;
+DbNav.Enabled:=false;
 end;
 
 end.

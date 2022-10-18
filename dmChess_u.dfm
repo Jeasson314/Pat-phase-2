@@ -48,4 +48,17 @@ object dmchess: Tdmchess
     Left = 216
     Top = 104
   end
+  object tblOrganiser: TADOTable
+    Active = True
+    Connection = ConChess
+    CursorType = ctStatic
+    TableName = 'organiser_regestration'
+    Left = 128
+    Top = 168
+  end
+  object DsOrganiser: TDataSource
+    DataSet = tblOrganiser
+    Left = 216
+    Top = 184
+  end
 end

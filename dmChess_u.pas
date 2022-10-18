@@ -12,6 +12,8 @@ type
     Dsregest: TDataSource;
     matchresults: TADOTable;
     Dsuser: TDataSource;
+    tblOrganiser: TADOTable;
+    DsOrganiser: TDataSource;
   private
     { Private declarations }
   public
