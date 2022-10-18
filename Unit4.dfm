@@ -200,35 +200,35 @@ object Form4: TForm4
       end
       object Firstname_login: TEdit
         Left = 3
-        Top = 464
+        Top = 469
         Width = 134
-        Height = 27
+        Height = 21
         TabOrder = 3
       end
       object password_login: TEdit
         Left = 3
         Top = 497
         Width = 134
-        Height = 28
+        Height = 21
         TabOrder = 4
       end
-      object Button1: TButton
+      object btnUsername: TButton
         Left = 3
         Top = 531
         Width = 64
         Height = 25
         Caption = 'Log in'
         TabOrder = 5
-        OnClick = Button1Click
+        OnClick = btnUsernameClick
       end
-      object Button2: TButton
+      object btnCreate: TButton
         Left = 73
         Top = 531
         Width = 64
         Height = 25
         Caption = 'Create new'
         TabOrder = 6
-        OnClick = Button2Click
+        OnClick = btnCreateClick
       end
     end
   end

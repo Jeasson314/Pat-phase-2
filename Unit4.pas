@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ComCtrls,dmChess_u, Grids, DBGrids, ExtCtrls, DBCtrls, StdCtrls,Procedures;
+  Dialogs, ComCtrls,dmChess_u, Grids, DBGrids, ExtCtrls, DBCtrls, StdCtrls;
 
 type
   TForm4 = class(TForm)
@@ -19,13 +19,13 @@ type
     Label1: TLabel;
     Firstname_login: TEdit;
     password_login: TEdit;
-    Button1: TButton;
+    btnUsername: TButton;
     Label3: TLabel;
     Label4: TLabel;
-    Button2: TButton;
+    btnCreate: TButton;
     procedure FormActivate(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
+    procedure btnUsernameClick(Sender: TObject);
+    procedure btnCreateClick(Sender: TObject);
     procedure encryption(password: string);
   private
     { Private declarations }
@@ -34,42 +34,58 @@ type
 
 var
   Form4: TForm4;
-
+  password,result:string;
 implementation
 
 {$R *.dfm}
 
-procedure TForm4.Button1Click(Sender: TObject);
+procedure TForm4.btnUsernameClick(Sender: TObject);
 var storage:textfile;
-    //loginpassword,loginusername:string;
+    loginusername:string;
+    loop:integer;
 begin
-assignfile(storage,'/textfiles/username.txt');
+assignfile(storage,'.\textfiles\username.txt');
+password:=password_login.Text;
+loginusername:=Firstname_login.Text;
+reset(storage);
+encryption(password);
+while not eof do
+if  
 
 end;
 
-procedure TForm4.Button2Click(Sender: TObject);
+procedure TForm4.btnCreateClick(Sender: TObject);
 var storage:textfile;
-    username,password:string;
+    username:string;
 begin
 username:=inputbox('Username','Please input username',' ');
 password:=inputbox('Password','Please input password',' ');
+assignfile(storage,'.\textfiles\username.txt');
+append(storage);
 encryption(password);
+writeln(storage,username+','+result);
+closefile(storage);
 
 end;
 
 
-procedure encryption(password: string);
-var vlength,loop,key,asciiNum:integer;
-    Npassword:string;
+procedure TForm4.encryption(password: string);
+var vlength,loop,asciiNum:integer;
+    Npassword,letter:string;
 begin
   vlength:=length(password);
-  key:=(round(vlength));
 
   for loop := 1 to vlength do
+    begin
     asciiNum :=ord(password[loop]);
-    Npassword:=Npassword +chr(asciiNum+key);
- password:=Npassword;
+    showmessage(inttostr(asciiNum));
+    Npassword:=Npassword +chr(asciiNum+vlength);
+    showmessage(Npassword);
+    end;
+ result:=Npassword;
 end;
+
+
 
 procedure TForm4.FormActivate(Sender: TObject);
 begin
