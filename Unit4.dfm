@@ -44,6 +44,8 @@ object Form4: TForm4
     object TabSheet2: TTabSheet
       Caption = 'Tournament Organisers'
       ImageIndex = 1
+      ExplicitLeft = 8
+      ExplicitTop = 30
       object Image1: TImage
         Left = 695
         Top = 3
@@ -200,6 +202,7 @@ object Form4: TForm4
           item
             Expanded = False
             FieldName = 'round_number'
+            Width = 104
             Visible = True
           end>
       end
@@ -217,22 +220,13 @@ object Form4: TForm4
         Height = 21
         TabOrder = 3
       end
-      object btnUsername: TButton
-        Left = 3
-        Top = 531
-        Width = 64
-        Height = 25
-        Caption = 'Log in'
-        TabOrder = 4
-        OnClick = btnUsernameClick
-      end
       object btnCreate: TButton
         Left = 73
         Top = 531
         Width = 64
         Height = 25
         Caption = 'Create new'
-        TabOrder = 5
+        TabOrder = 4
         OnClick = btnCreateClick
       end
       object DBNav: TDBNavigator
@@ -241,7 +235,7 @@ object Form4: TForm4
         Width = 240
         Height = 25
         DataSource = dmchess.Dsregest
-        TabOrder = 6
+        TabOrder = 5
       end
     end
   end

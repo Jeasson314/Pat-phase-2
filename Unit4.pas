@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ComCtrls,dmChess_u, Grids, DBGrids, ExtCtrls, DBCtrls, StdCtrls;
+  Dialogs, ComCtrls,dmChess_u,patprocedure, Grids, DBGrids, ExtCtrls, DBCtrls, StdCtrls;
 
 type
   TForm4 = class(TForm)
@@ -21,7 +21,6 @@ type
     DBMatch: TDBGrid;
     Firstname_login: TEdit;
     password_login: TEdit;
-    btnUsername: TButton;
     btnCreate: TButton;
     DBNav: TDBNavigator;
     procedure FormActivate(Sender: TObject);
@@ -31,49 +30,15 @@ type
   private
     { Private declarations }
   public
+  password,result:string;
   end;
 
 var
   Form4: TForm4;
-  password,result:string;
+
 implementation
 
 {$R *.dfm}
-
-procedure TForm4.btnUsernameClick(Sender: TObject);
-var loginusername,vtext:string;
-    loop:integer;
-    username_check:boolean;
-begin
-password:=password_login.Text;
-loginusername:=Firstname_login.Text;
-encryption(password);
-username_check:=false;
-with dmChess do
-  begin
-  tblOrganiser.First;
-  while (not tblorganiser.Eof) AND (username_check =false) do
-  begin
-    if tblOrganiser['username']=loginusername then
-    begin
-      username_check:=true;
-      if tblorganiser['password']=result then
-      begin
-       DBMatch.Enabled:=true;
-       DBContestants.enabled:=true;
-       btnCreate.Enabled:=true;
-       DbNav.Enabled:=true;
-      showmessage('Logged in');
-      end
-       else
-       showmessage('Password is incorrect')
-    end
-  else tblorganiser.Next;
-  end;
-
-  end;
-
-end;
 
 
 procedure TForm4.btnCreateClick(Sender: TObject);
@@ -111,19 +76,7 @@ dmChess.tblOrganiser.Post;
 end;
 
 
-procedure TForm4.encryption(password: string);
-var vlength,loop,asciiNum:integer;
-    Npassword:string;
-begin
-  vlength:=length(password);
 
-  for loop := 1 to vlength do
-    begin
-    asciiNum :=ord(password[loop]);
-    Npassword:=Npassword +chr(asciiNum+vlength);
-    end;
- result:=Npassword;
-end;
 
 
 
