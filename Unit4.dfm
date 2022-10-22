@@ -12,6 +12,7 @@ object Form4: TForm4
   Font.Style = []
   OldCreateOrder = False
   Position = poDesigned
+  Visible = True
   OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
@@ -40,12 +41,14 @@ object Form4: TForm4
     TabWidth = 480
     object TabSheet1: TTabSheet
       Caption = 'Tournament Participant'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
     object TabSheet2: TTabSheet
       Caption = 'Tournament Organisers'
       ImageIndex = 1
-      ExplicitLeft = 8
-      ExplicitTop = 30
       object Image1: TImage
         Left = 695
         Top = 3

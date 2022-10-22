@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ComCtrls,dmChess_u,patprocedure, Grids, DBGrids, ExtCtrls, DBCtrls, StdCtrls;
+  Dialogs, ComCtrls,dmChess_u,patprocedure,login_form, Grids, DBGrids, ExtCtrls, DBCtrls, StdCtrls;
 
 type
   TForm4 = class(TForm)
@@ -24,13 +24,13 @@ type
     btnCreate: TButton;
     DBNav: TDBNavigator;
     procedure FormActivate(Sender: TObject);
-    procedure btnUsernameClick(Sender: TObject);
     procedure btnCreateClick(Sender: TObject);
     procedure encryption(password: string);
   private
     { Private declarations }
   public
-  password,result:string;
+  password:string;
+  result:string;
   end;
 
 var
@@ -75,14 +75,23 @@ dmChess.tblOrganiser['password']:=result;
 dmChess.tblOrganiser.Post;
 end;
 
+procedure TForm4.encryption(password: string);
+var vlength,loop,asciiNum:integer;
+     Npassword:string;
+begin
+  vlength:=length(password);
 
-
-
-
+  for loop := 1 to vlength do
+    begin
+    asciiNum :=ord(password[loop]);
+    Npassword:=Npassword +chr(asciiNum+vlength);
+    end;
+result:=Npassword;
+end;
 
 procedure TForm4.FormActivate(Sender: TObject);
 begin
-
+login.ShowModal;
 label1.BringToFront;
 DBMatch.Enabled:=false;
 DBContestants.Enabled:=false;

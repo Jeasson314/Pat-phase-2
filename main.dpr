@@ -3,7 +3,8 @@ program main;
 uses
   Forms,
   Unit4 in 'Unit4.pas' {Form4},
-  dmChess_u in 'dmChess_u.pas' {dmchess: TDataModule};
+  dmChess_u in 'dmChess_u.pas' {dmchess: TDataModule},
+  login_form in 'login_form.pas'; {login}
 
 {$R *.res}
 
@@ -12,5 +13,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TForm4, Form4);
   Application.CreateForm(Tdmchess, dmchess);
+  Application.CreateForm(TLogin, Login);
   Application.Run;
 end.
