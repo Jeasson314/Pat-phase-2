@@ -46,12 +46,15 @@
 			<DCCReference Include="Unit4.pas">
 				<Form>Form4</Form>
 			</DCCReference>
+			<DCCReference Include="login_form.pas">
+				<Form>login</Form>
+			</DCCReference>
 			<DCCReference Include="dmChess_u.pas">
 				<Form>dmchess</Form>
 				<DesignClass>TDataModule</DesignClass>
 			</DCCReference>
-			<DCCReference Include="login_form.pas">
-				<Form>login</Form>
+			<DCCReference Include="regestration.pas">
+				<Form>Register_form</Form>
 			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
@@ -107,6 +110,7 @@
 						<Source Name="MainSource">main.dpr</Source>
 					</Source>
 				</Delphi.Personality>
+				<ModelSupport>False</ModelSupport>
 			</BorlandProject>
 			<ProjectFileVersion>12</ProjectFileVersion>
 		</ProjectExtensions>

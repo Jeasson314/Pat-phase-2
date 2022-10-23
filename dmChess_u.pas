@@ -24,7 +24,6 @@ var
   dmchess: Tdmchess;
 
 implementation
-
 {$R *.dfm}
 
 end.

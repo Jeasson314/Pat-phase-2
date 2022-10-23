@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs,dmChess_u,patprocedure, StdCtrls, ExtCtrls, pngimage;
+  Dialogs ,StdCtrls, ExtCtrls,unit4,pngimage;
 
 type
   Tlogin = class(TForm)
@@ -15,9 +15,12 @@ type
     lUsername: TLabel;
     LPassword: TLabel;
     Imageside: TImage;
+    Register: TButton;
     procedure btnloginClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure hello();
     procedure btnForgottenClick(Sender: TObject);
+    procedure RegisterClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -29,10 +32,11 @@ var
 
 implementation
 {$R *.dfm}
-
+ uses dmChess_u,
+      regestration;
 procedure Tlogin.btnForgottenClick(Sender: TObject);
 begin
-Messagedlg()
+messagedlg('Please contact an event organiser',mtinformation,[mbOK],0);
 end;
 
 procedure Tlogin.btnloginClick(Sender: TObject);
@@ -66,7 +70,7 @@ with dmChess do
     if tblOrganiser['password']=result then
         begin
        showmessage('Welcome '+loginusername);
-       login.close;
+       self.Close;
         end
        else
         mesD:= messagedlg('The password you have entered is incorrect,Would you like to try again? If not the program will close',mtwarning,[mbYes,mbNo],0);
@@ -91,6 +95,17 @@ lusername.BringToFront;
 lPassword.BringToFront;
 lUsername.Color:=clWhite;
 lpassword.Color:=clWhite;
+end;
+
+procedure Tlogin.hello;
+begin
+showmessage('hello');
+end;
+
+procedure Tlogin.RegisterClick(Sender: TObject);
+begin
+self.Close;
+register_form.show;
 end;
 
 end.

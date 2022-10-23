@@ -5,6 +5,7 @@ object login: Tlogin
   ClientHeight = 471
   ClientWidth = 424
   Color = clBtnFace
+  Enabled = False
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -8845,18 +8846,27 @@ object login: Tlogin
     Left = 112
     Top = 220
     Width = 169
-    Height = 50
+    Height = 58
     Caption = 'Log in'
     TabOrder = 2
     OnClick = btnloginClick
   end
   object btnForgotten: TButton
     Left = 112
-    Top = 276
+    Top = 284
     Width = 169
-    Height = 50
+    Height = 58
     Caption = 'Password Forgottten'
     TabOrder = 3
     OnClick = btnForgottenClick
+  end
+  object Register: TButton
+    Left = 112
+    Top = 348
+    Width = 169
+    Height = 53
+    Caption = 'Register'
+    TabOrder = 4
+    OnClick = RegisterClick
   end
 end

@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ComCtrls,dmChess_u,patprocedure,login_form, Grids, DBGrids, ExtCtrls, DBCtrls, StdCtrls;
+  Dialogs, ComCtrls,dmChess_u, Grids, DBGrids,regestration,ExtCtrls, DBCtrls, StdCtrls;
 
 type
   TForm4 = class(TForm)
@@ -39,7 +39,7 @@ var
 implementation
 
 {$R *.dfm}
-
+uses login_form;
 
 procedure TForm4.btnCreateClick(Sender: TObject);
 var storage:textfile;
@@ -91,12 +91,14 @@ end;
 
 procedure TForm4.FormActivate(Sender: TObject);
 begin
-login.ShowModal;
+//Register_form.Show;
+//login.RegisterClick(Sender);
 label1.BringToFront;
 DBMatch.Enabled:=false;
 DBContestants.Enabled:=false;
 btncreate.Enabled:=false;
 DbNav.Enabled:=false;
+
 end;
 
 end.

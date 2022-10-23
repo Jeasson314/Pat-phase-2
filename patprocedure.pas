@@ -3,6 +3,7 @@ unit patprocedure;
 interface
 
 procedure encryption(password:string);
+procedure validation
 implementation
 
 procedure encryption(password: string);
