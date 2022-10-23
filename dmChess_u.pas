@@ -21,7 +21,7 @@ type
   end;
 
 var
-  frmdmchess: Tdmchess;
+  dmchess: Tdmchess;
 
 implementation
 

@@ -12,8 +12,7 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TForm4, Form4);
+  Application.CreateForm(Tdmchess, dmchess);
   Application.CreateForm(TLogin, Login);
-  Application.CreateForm(Tdmchess, frmdmchess);
-
   Application.Run;
 end.

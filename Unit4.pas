@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ComCtrls,dmChess_u,patprocedure, Grids, DBGrids, ExtCtrls, DBCtrls, StdCtrls;
+  Dialogs, ComCtrls,dmChess_u,patprocedure,login_form, Grids, DBGrids, ExtCtrls, DBCtrls, StdCtrls;
 
 type
   TForm4 = class(TForm)
@@ -39,7 +39,7 @@ var
 implementation
 
 {$R *.dfm}
-uses login_form;
+
 
 procedure TForm4.btnCreateClick(Sender: TObject);
 var storage:textfile;
@@ -48,7 +48,7 @@ var storage:textfile;
 begin
 username:=inputbox('Username','Please input username','');
 usernamecheck:=false;
-with frmdmChess do
+with dmChess do
   begin
   tblOrganiser.First;
   while (not tblorganiser.Eof) AND (usernamecheck =false) do
@@ -69,10 +69,10 @@ assignfile(storage,'.\textfiles\username.txt');
 append(storage);
 encryption(password);
 writeln(storage,username+','+result);
-frmdmChess.tblOrganiser.Insert;
-frmdmChess.tblOrganiser['username']:=username;
-frmdmChess.tblOrganiser['password']:=result;
-frmdmChess.tblOrganiser.Post;
+dmChess.tblOrganiser.Insert;
+dmChess.tblOrganiser['username']:=username;
+dmChess.tblOrganiser['password']:=result;
+dmChess.tblOrganiser.Post;
 end;
 
 procedure TForm4.encryption(password: string);
@@ -91,7 +91,7 @@ end;
 
 procedure TForm4.FormActivate(Sender: TObject);
 begin
-login.Showmodal;
+login.ShowModal;
 label1.BringToFront;
 DBMatch.Enabled:=false;
 DBContestants.Enabled:=false;

@@ -8857,5 +8857,6 @@ object login: Tlogin
     Height = 50
     Caption = 'Password Forgottten'
     TabOrder = 3
+    OnClick = btnForgottenClick
   end
 end

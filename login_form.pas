@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs,patprocedure, StdCtrls, ExtCtrls, pngimage;
+  Dialogs,dmChess_u,patprocedure, StdCtrls, ExtCtrls, pngimage;
 
 type
   Tlogin = class(TForm)
@@ -17,6 +17,7 @@ type
     Imageside: TImage;
     procedure btnloginClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure btnForgottenClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -27,8 +28,12 @@ var
   password,result:string;
 
 implementation
- uses dmChess_u;
 {$R *.dfm}
+
+procedure Tlogin.btnForgottenClick(Sender: TObject);
+begin
+Messagedlg()
+end;
 
 procedure Tlogin.btnloginClick(Sender: TObject);
 var loginusername,result,Npassword:string;
@@ -51,7 +56,7 @@ for loop := 1 to vlength do
     end;
 result:=Npassword;
 
-with frmdmChess do
+with dmChess do
   begin
   tblOrganiser.First;
   while (not tblorganiser.Eof) AND (username_check =false) do
