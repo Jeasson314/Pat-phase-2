@@ -70,16 +70,20 @@ with dmChess do
     if tblOrganiser['password']=result then
         begin
        showmessage('Welcome '+loginusername);
-       self.Close;
+       self.close;
+       form4.Button2.Enabled:=true;
         end
        else
-        mesD:= messagedlg('The password you have entered is incorrect,Would you like to try again? If not the program will close',mtwarning,[mbYes,mbNo],0);
+        case messagedlg('The password you have entered is incorrect,Would you like to try again? If not the program will close',mtwarning,[mbYes,mbNo],0) of
+         mrYes:Messagedlg('Please try again, If you have forgotten your password press forgot password.',mtInformation,[mbOk],0,mbOk);
+         mrNo:application.Terminate;
+        end;
         if mesD=6 then
         begin
-        Messagedlg('Please try again, If you have forgotten your password press forgot password.',mtInformation,[mbOk],0,mbOk);
+
         end
         else
-        application.Terminate;
+
     end
     else
     tblOrganiser.Next

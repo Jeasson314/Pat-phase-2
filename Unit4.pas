@@ -4,28 +4,19 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ComCtrls,dmChess_u, Grids, DBGrids,regestration,ExtCtrls, DBCtrls, StdCtrls;
+  Dialogs, ComCtrls,dmChess_u, Grids, DBGrids,regestration,ExtCtrls, DBCtrls, StdCtrls,
+  pngimage;
 
 type
   TForm4 = class(TForm)
-    Label3: TLabel;
-    DBNavContestant: TDBNavigator;
-    PageControl1: TPageControl;
-    TabSheet1: TTabSheet;
-    TabSheet2: TTabSheet;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
     Image1: TImage;
-    Label2: TLabel;
-    Label1: TLabel;
-    Label4: TLabel;
-    DBContestants: TDBGrid;
-    DBMatch: TDBGrid;
-    Firstname_login: TEdit;
-    password_login: TEdit;
-    btnCreate: TButton;
-    DBNav: TDBNavigator;
     procedure FormActivate(Sender: TObject);
     procedure btnCreateClick(Sender: TObject);
     procedure encryption(password: string);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -75,6 +66,11 @@ dmChess.tblOrganiser['password']:=result;
 dmChess.tblOrganiser.Post;
 end;
 
+procedure TForm4.Button1Click(Sender: TObject);
+begin
+ login.Show
+end;
+
 procedure TForm4.encryption(password: string);
 var vlength,loop,asciiNum:integer;
      Npassword:string;
@@ -93,12 +89,8 @@ procedure TForm4.FormActivate(Sender: TObject);
 begin
 //Register_form.Show;
 //login.RegisterClick(Sender);
-label1.BringToFront;
-DBMatch.Enabled:=false;
-DBContestants.Enabled:=false;
-btncreate.Enabled:=false;
-DbNav.Enabled:=false;
-
+button2.Enabled:=false;
+button3.Enabled:=false;
 end;
 
 end.

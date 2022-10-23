@@ -5,7 +5,6 @@ object Register_form: TRegister_form
   ClientHeight = 481
   ClientWidth = 559
   Color = clBtnFace
-  Enabled = False
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -17,7 +16,7 @@ object Register_form: TRegister_form
   TextHeight = 13
   object Image1: TImage
     Left = -168
-    Top = -35
+    Top = -43
     Width = 905
     Height = 692
     Picture.Data = {
@@ -3051,11 +3050,96 @@ object Register_form: TRegister_form
       AF540629B184A29528F6A6F12088CF37E83B57ABD4009C6796946335EAF57A80
       3FFFD9}
   end
+  object tlabel1: TLabel
+    Left = 120
+    Top = 56
+    Width = 74
+    Height = 19
+    Caption = 'First name'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object tlabel7: TLabel
+    Left = 120
+    Top = 120
+    Width = 72
+    Height = 19
+    Caption = 'Last name'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object tlabel2: TLabel
+    Left = 336
+    Top = 119
+    Width = 89
+    Height = 19
+    Caption = 'Date of Birth'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object tlabel3: TLabel
+    Left = 120
+    Top = 196
+    Width = 67
+    Height = 19
+    Caption = 'Password'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object tlabel4: TLabel
+    Left = 120
+    Top = 263
+    Width = 98
+    Height = 19
+    Caption = 'Email address'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object tlaber5: TLabel
+    Left = 308
+    Top = 212
+    Width = 141
+    Height = 19
+    Caption = 'Are you a member?'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
   object edtFirstname: TEdit
     Left = 88
-    Top = 96
-    Width = 136
-    Height = 42
+    Top = 81
+    Width = 137
+    Height = 27
+    Alignment = taCenter
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 0
     TextHint = 'James'
   end
@@ -3063,13 +3147,20 @@ object Register_form: TRegister_form
     Left = 88
     Top = 144
     Width = 137
-    Height = 46
+    Height = 27
+    Alignment = taCenter
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 1
     TextHint = 'Easson'
   end
   object Register: TBitBtn
-    Left = 184
-    Top = 310
+    Left = 192
+    Top = 342
     Width = 153
     Height = 43
     Caption = 'Register'
@@ -3085,7 +3176,7 @@ object Register_form: TRegister_form
     OnClick = RegisterClick
   end
   object Birthday: TDateTimePicker
-    Left = 279
+    Left = 294
     Top = 144
     Width = 186
     Height = 32
@@ -3094,11 +3185,11 @@ object Register_form: TRegister_form
     TabOrder = 3
   end
   object Memebership: TCheckBox
-    Left = 279
-    Top = 221
-    Width = 193
+    Left = 319
+    Top = 229
+    Width = 130
     Height = 36
-    Caption = 'Membership'
+    Caption = 'Member'
     Color = clBtnHighlight
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
@@ -3111,17 +3202,32 @@ object Register_form: TRegister_form
   end
   object edtPassword: TEdit
     Left = 88
-    Top = 196
+    Top = 221
     Width = 137
-    Height = 42
+    Height = 27
+    Alignment = taCenter
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    PasswordChar = '*'
     TabOrder = 5
     TextHint = 'Password123'
   end
   object edtEmail: TEdit
-    Left = 88
-    Top = 251
-    Width = 137
-    Height = 38
+    Left = 32
+    Top = 288
+    Width = 241
+    Height = 27
+    Alignment = taCenter
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 6
     TextHint = 'Jameseasson@gmail.com'
   end
