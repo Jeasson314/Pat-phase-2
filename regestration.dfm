@@ -3222,11 +3222,13 @@ object Register_form: TRegister_form
     Width = 241
     Height = 27
     Alignment = taCenter
+    BiDiMode = bdLeftToRight
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -16
     Font.Name = 'Tahoma'
     Font.Style = []
+    ParentBiDiMode = False
     ParentFont = False
     TabOrder = 6
     TextHint = 'Jameseasson@gmail.com'

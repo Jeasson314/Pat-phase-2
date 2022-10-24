@@ -3,7 +3,7 @@ unit regestration;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Windows,strutils, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, jpeg, ExtCtrls,dmChess_u, StdCtrls, ComCtrls, Buttons;
 
 type
@@ -24,6 +24,7 @@ type
     tlabel7: TLabel;
     procedure FormActivate(Sender: TObject);
     procedure RegisterClick(Sender: TObject);
+    procedure validation();
   private
     { Private declarations }
   public
@@ -34,7 +35,7 @@ type
 
 var
   Register_form: TRegister_form;
-
+  emailiscorrect:boolean;
 implementation
 
 {$R *.dfm}
@@ -52,6 +53,16 @@ password:=edtPassword.Text;
 email:=edtEmail.Text;
 birthdaydate:=birthday.Date;
 membership:=memebership.Checked;
+validation();
+
+end;
+
+procedure TRegister_form.validation;
+
+begin
+if containstext('@,.',email) then
+emailiscorrect:=true;
+
 end;
 
 end.
