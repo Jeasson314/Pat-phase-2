@@ -3160,7 +3160,7 @@ object Register_form: TRegister_form
   end
   object Register: TBitBtn
     Left = 192
-    Top = 342
+    Top = 350
     Width = 153
     Height = 43
     Caption = 'Register'

@@ -8799,7 +8799,7 @@ object Form4: TForm4
       38C8E21617C2B8278539B7022D7CF67F013662DA5CA510876C0000000049454E
       44AE426082}
   end
-  object Button1: TButton
+  object btnlogin: TButton
     Left = 131
     Top = 113
     Width = 134
@@ -8812,14 +8812,15 @@ object Form4: TForm4
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    OnClick = Button1Click
+    OnClick = btnloginClick
   end
-  object Button2: TButton
+  object btnParticipant: TButton
     Left = 131
     Top = 224
     Width = 134
     Height = 57
-    Caption = 'Button2'
+    Caption = 'Participant'
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -8827,13 +8828,15 @@ object Form4: TForm4
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    OnClick = btnParticipantClick
   end
-  object Button3: TButton
+  object btnOrganiser: TButton
     Left = 131
     Top = 319
     Width = 134
     Height = 58
-    Caption = 'Button3'
+    Caption = 'Organiser'
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -8841,5 +8844,6 @@ object Form4: TForm4
     Font.Style = []
     ParentFont = False
     TabOrder = 2
+    OnClick = btnOrganiserClick
   end
 end

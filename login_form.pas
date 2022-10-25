@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs ,StdCtrls, ExtCtrls,unit4,pngimage;
+  Dialogs ,StdCtrls, ExtCtrls,pngimage;
 
 type
   Tlogin = class(TForm)
@@ -32,7 +32,7 @@ var
 
 implementation
 {$R *.dfm}
- uses dmChess_u,
+ uses dmChess_u,unit4,
       regestration;
 procedure Tlogin.btnForgottenClick(Sender: TObject);
 begin
@@ -71,7 +71,7 @@ with dmChess do
         begin
        showmessage('Welcome '+loginusername);
        self.close;
-       form4.Button2.Enabled:=true;
+       form4.btnOrganiser.Enabled:=true;
         end
        else
         case messagedlg('The password you have entered is incorrect,Would you like to try again? If not the program will close',mtwarning,[mbYes,mbNo],0) of

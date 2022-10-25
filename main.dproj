@@ -57,7 +57,10 @@
 				<Form>Register_form</Form>
 			</DCCReference>
 			<DCCReference Include="Participant.pas">
-				<Form>Form1</Form>
+				<Form>Participant_form</Form>
+			</DCCReference>
+			<DCCReference Include="organiser.pas">
+				<Form>FOrganiser</Form>
 			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>

@@ -9,14 +9,16 @@ uses
 
 type
   TForm4 = class(TForm)
-    Button1: TButton;
-    Button2: TButton;
-    Button3: TButton;
+    btnlogin: TButton;
+    btnOrganiser: TButton;
     Image1: TImage;
+    btnParticipant: TButton;
     procedure FormActivate(Sender: TObject);
     procedure btnCreateClick(Sender: TObject);
     procedure encryption(password: string);
-    procedure Button1Click(Sender: TObject);
+    procedure btnloginClick(Sender: TObject);
+    procedure btnParticipantClick(Sender: TObject);
+    procedure btnOrganiserClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,7 +32,7 @@ var
 implementation
 
 {$R *.dfm}
-uses login_form;
+uses login_form,participant,organiser;
 
 procedure TForm4.btnCreateClick(Sender: TObject);
 var storage:textfile;
@@ -66,9 +68,19 @@ dmChess.tblOrganiser['password']:=result;
 dmChess.tblOrganiser.Post;
 end;
 
-procedure TForm4.Button1Click(Sender: TObject);
+procedure TForm4.btnloginClick(Sender: TObject);
 begin
  login.Show
+end;
+
+procedure TForm4.btnOrganiserClick(Sender: TObject);
+begin
+fOrganiser.show;
+end;
+
+procedure TForm4.btnParticipantClick(Sender: TObject);
+begin
+participant_form.show;
 end;
 
 procedure TForm4.encryption(password: string);
@@ -89,8 +101,7 @@ procedure TForm4.FormActivate(Sender: TObject);
 begin
 //Register_form.Show;
 //login.RegisterClick(Sender);
-button2.Enabled:=false;
-button3.Enabled:=false;
+//button2.Enabled:=false;
 end;
 
 end.

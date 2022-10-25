@@ -6,7 +6,8 @@ uses
   login_form in 'login_form.pas' {login},
   dmChess_u in 'dmChess_u.pas' {dmchess: TDataModule},
   regestration in 'regestration.pas' {Register_form},
-  Participant in 'Participant.pas' {Form1};
+  Participant in 'Participant.pas' {Participant_form},
+  organiser in 'organiser.pas' {FOrganiser};
 
 {login}
 
@@ -19,6 +20,7 @@ begin
   Application.CreateForm(Tdmchess, dmchess);
   Application.CreateForm(Tlogin, login);
   Application.CreateForm(TRegister_form, Register_form);
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TParticipant_form, Participant_form);
+  Application.CreateForm(TFOrganiser, FOrganiser);
   Application.Run;
 end.

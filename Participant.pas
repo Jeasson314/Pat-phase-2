@@ -7,7 +7,7 @@ uses
   Dialogs;
 
 type
-  TForm1 = class(TForm)
+  TParticipant_form = class(TForm)
   private
     { Private declarations }
   public
@@ -15,7 +15,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  Participant_form: TParticipant_form;
 
 implementation
 
