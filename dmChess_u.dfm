@@ -61,4 +61,9 @@ object dmchess: Tdmchess
     Left = 216
     Top = 184
   end
+  object dblength: TQuery
+    DataSource = Dsregest
+    Left = 296
+    Top = 56
+  end
 end

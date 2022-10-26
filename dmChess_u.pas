@@ -3,7 +3,7 @@ unit dmChess_u;
 interface
 
 uses
-  SysUtils, Classes, DB, ADODB;
+  SysUtils, Classes, DB, ADODB, DBTables;
 
 type
   Tdmchess = class(TDataModule)
@@ -14,6 +14,7 @@ type
     Dsuser: TDataSource;
     tblOrganiser: TADOTable;
     DsOrganiser: TDataSource;
+    dblength: TQuery;
   private
     { Private declarations }
   public
