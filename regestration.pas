@@ -147,6 +147,7 @@ var flower,llower:string;
 begin
 lastlength:=length(lastname);
 firstlength:=length(firstname);
+birthdaydate:=dateof(birthdaydate);
 nameiscorrect:=true;
 surnameiscorrect:=true;
 passwordiscorrect:=true;

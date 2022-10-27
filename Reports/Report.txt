@@ -1,0 +1,8 @@
+First Name	Last Name	Birthday		Members	Wins	Loses	Draw	
+James		Easson		2005/05/31		true		3	2	1	
+Gwyddian		Bosman		2005/04/30		true		2	3	1	
+James		Easson		2005/07/01		true		0	0	0	
+James		Blom		2008/11/19		false		0	0	0	
+Jeff		Da vinci		2009/06/22		true		0	0	0	
+John		Marc		2001/11/14		true		0	0	0	
+Sarah		Hicks		2005/06/11		true		0	0	0	

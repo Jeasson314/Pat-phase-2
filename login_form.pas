@@ -89,6 +89,36 @@ with dmChess do
     tblOrganiser.Next
     end
   end;
+  begin
+  dmchess.tblregistration.First;
+  while (not dmchess.tblregistration.Eof) AND (username_check =false) do
+  begin
+    if dmchess.tblregistration['username']=loginusername then begin
+    username_check:=true;
+    if dmchess.tblregistration['password']=result then
+        begin
+       showmessage('Welcome '+loginusername);
+       form4.btnParticipant.Enabled:=true;
+       self.close;
+
+        end
+       else
+        case messagedlg('The password you have entered is incorrect,Would you like to try again? If not the program will close',mtwarning,[mbYes,mbNo],0) of
+         mrYes:Messagedlg('Please try again, If you have forgotten your password press forgot password.',mtInformation,[mbOk],0,mbOk);
+         mrNo:application.Terminate;
+        end;
+        if mesD=6 then
+        begin
+
+        end
+        else
+
+    end
+    else
+    dmchess.tblregistration.Next
+    end
+  end;
+
 if username_check=false then
    messagedlg('Username not found',mtError,[mbOk],0,mbOk)
 end;

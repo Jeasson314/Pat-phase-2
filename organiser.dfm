@@ -2,7 +2,7 @@ object FOrganiser: TFOrganiser
   Left = 0
   Top = 0
   Caption = 'FOrganiser'
-  ClientHeight = 491
+  ClientHeight = 508
   ClientWidth = 874
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -60,6 +60,27 @@ object FOrganiser: TFOrganiser
     Width = 66
     Height = 13
     Caption = 'Name search:'
+  end
+  object Label5: TLabel
+    Left = 8
+    Top = 441
+    Width = 97
+    Height = 13
+    Caption = 'Enter match results:'
+  end
+  object Label6: TLabel
+    Left = 279
+    Top = 443
+    Width = 75
+    Height = 13
+    Caption = 'Round Number:'
+  end
+  object Boardnumber: TLabel
+    Left = 360
+    Top = 443
+    Width = 68
+    Height = 13
+    Caption = 'Board Number'
   end
   object DBregestration: TDBGrid
     Left = 8
@@ -231,23 +252,12 @@ object FOrganiser: TFOrganiser
   end
   object btnReport: TButton
     Left = 775
-    Top = 194
+    Top = 162
     Width = 91
     Height = 25
     Caption = 'Generate Report'
     TabOrder = 11
     OnClick = btnReportClick
-  end
-  object CBreport: TComboBox
-    Left = 767
-    Top = 167
-    Width = 99
-    Height = 21
-    TabOrder = 12
-    Text = 'CBreport'
-    Items.Strings = (
-      'Text files'
-      'HTML file')
   end
   object DBGrid1: TDBGrid
     Left = 8
@@ -255,7 +265,7 @@ object FOrganiser: TFOrganiser
     Width = 695
     Height = 153
     DataSource = dmchess.Dsuser
-    TabOrder = 13
+    TabOrder = 12
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
@@ -320,14 +330,14 @@ object FOrganiser: TFOrganiser
     Width = 240
     Height = 25
     DataSource = dmchess.Dsuser
-    TabOrder = 14
+    TabOrder = 13
   end
   object Edtsearch: TEdit
     Left = 8
     Top = 414
     Width = 121
     Height = 21
-    TabOrder = 15
+    TabOrder = 14
     Text = 'edtfilter'
   end
   object btnFilter: TBitBtn
@@ -338,7 +348,62 @@ object FOrganiser: TFOrganiser
     Caption = 'Search'
     DoubleBuffered = True
     ParentDoubleBuffered = False
-    TabOrder = 16
+    TabOrder = 15
     OnClick = btnFilterClick
+  end
+  object btnReset: TButton
+    Left = 472
+    Top = 412
+    Width = 75
+    Height = 25
+    Caption = 'Reset Table'
+    TabOrder = 16
+    OnClick = btnResetClick
+  end
+  object btnMatch: TButton
+    Left = 8
+    Top = 460
+    Width = 111
+    Height = 25
+    Caption = 'Enter Match Results'
+    TabOrder = 17
+    OnClick = btnMatchClick
+  end
+  object Boardcolor: TRadioGroup
+    Left = 135
+    Top = 443
+    Width = 138
+    Height = 61
+    Caption = 'Choose board colour;'
+    Items.Strings = (
+      'Black'
+      'White'
+      'Draw')
+    TabOrder = 18
+  end
+  object edtRound: TEdit
+    Left = 279
+    Top = 462
+    Width = 75
+    Height = 21
+    TabOrder = 19
+    Text = 'edtRound'
+  end
+  object edtBoardnumber: TEdit
+    Left = 360
+    Top = 462
+    Width = 68
+    Height = 21
+    TabOrder = 20
+    Text = 'edtBoardnumber'
+  end
+  object btnUpdate: TButton
+    Left = 434
+    Top = 460
+    Width = 175
+    Height = 40
+    Caption = 'Update DB'
+    TabOrder = 21
+    OnClick = btnUpdateClick
   end
 end

@@ -14,7 +14,8 @@ type
     Dsuser: TDataSource;
     tblOrganiser: TADOTable;
     DsOrganiser: TDataSource;
-    dblength: TQuery;
+    reportgen: TQuery;
+    RegistrationDB: TADOQuery;
   private
     { Private declarations }
   public

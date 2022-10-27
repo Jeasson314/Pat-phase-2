@@ -61,9 +61,15 @@ object dmchess: Tdmchess
     Left = 216
     Top = 184
   end
-  object dblength: TQuery
+  object reportgen: TQuery
     DataSource = Dsregest
-    Left = 296
-    Top = 56
+    Left = 200
+    Top = 280
+  end
+  object RegistrationDB: TADOQuery
+    Connection = ConChess
+    Parameters = <>
+    Left = 128
+    Top = 248
   end
 end
