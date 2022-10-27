@@ -171,7 +171,7 @@ object FOrganiser: TFOrganiser
       'member'
       'wins'
       'loses'
-      'draw')
+      'draws')
   end
   object firstnamecheck: TCheckBox
     Left = 769
@@ -230,7 +230,7 @@ object FOrganiser: TFOrganiser
     TabOrder = 10
   end
   object btnReport: TButton
-    Left = 769
+    Left = 775
     Top = 194
     Width = 91
     Height = 25

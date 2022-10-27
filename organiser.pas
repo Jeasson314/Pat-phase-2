@@ -52,83 +52,21 @@ var search:string;
 begin
 search:=edtsearch.Text;
 with dmchess do
-dmChess.matchresults.Filtered:=false;
-dmChess.matchresults.Filtered:='first_name_white=' + quotedstr(search);
-dmChess.matchresults.Filtered:='first_name_black=' + quotedstr(search);
-dmChess.matchresults.Filtered:=true;
+//dmChess.matchresults.Filtered:=false;
+//dmChess.matchresults.Filtered:='first_name_white=' + quotedstr(search);
+//dmChess.matchresults.Filtered:='first_name_black=' + quotedstr(search);
+//dmChess.matchresults.Filtered:=true;
 end;
 
 procedure TFOrganiser.btnReportClick(Sender: TObject);
-var firstcheck,lastcheck,Birthdaycheck,membercheck,wincheck,losescheck,drawcheck:boolean;
-    report:textfile;
-    selected:string;
-    afirstname,alastname,aemail,abirthday,apassword,member,ausername,adate:array of string;
-    awin,alose,adraw:array of integer;
-    sline:string;
-    loop,alength:integer;
+var sqlText:string;
 begin
-firstcheck:=firstnamecheck.Checked;
-lastcheck:=lastnamecheck.Checked;
-Birthdaycheck:=Birthday.Checked;
-membercheck:=Members.Checked;
-wincheck:=Wins.Checked;
-drawcheck:=Draw.Checked;
-losescheck:=Loses.Checked;
-selected:=CBreport.Text;
-alength:=dmchess.dblength.SQL.Add('SELECT COUNT(*) FROM tblreges');
-setlength(afirstname,alength);
-setlength(alastname,alength);
-setlength(abirthday,alength);
-setlength(aemail,alength);
-setlength(apassword,alength);
-dmChess.tblregistration.First;
-while not dmChess.tblregistration.Eof do
-begin
-loop:=1;
-dmChess.tblregistration.Next;
-if firstcheck=true then
-begin
-afirstname[loop]:=dmChess.tblregistration['first_name'];
-showmessage(afirstname[loop]);
-end;
-if lastcheck=true then begin
-alastname[loop]:=dmChess.tblregistration['last_name'];
-end;
-if birthdaycheck=true then begin
-aBirthday[loop]:=dmChess.tblregistration['birthday'];
-end;
-if membercheck=true then begin
-member[loop]:=dmChess.tblregistration['member'];
-end;
-if wincheck=true then begin
-awin[loop]:=dmChess.tblregistration['wins'];
-end;
-if losescheck=true then begin
-alose[loop]:=dmChess.tblregistration['loses'];
-end;
-if drawcheck=true then begin
-adraw[loop]:=dmChess.tblregistration['draw'];
-end;
-inc(loop);
+if firstnamecheck=true then
+sqlText:='first_name,';
+
+Dmchess.dblength.SQL
 end;
 
-if selected='Text files' then
-begin
-loop:=0;
-assignfile(report,'.\Reports\Report.txt');
-rewrite(report);
-alength:=length(afirstname);
-while not loop=alength do
-begin
-inc(loop);
-sline:=afirstname[loop]+','+alastname[loop]+','+abirthday[loop]+','+member[loop]+','+inttostr(awin[loop])+','+inttostr(alose[loop])+','+inttostr(adraw[loop]);
-append(report);
-writeln(report);
-end;
-closefile(report);
-end;
-
-end;
 
 procedure TFOrganiser.btnSortClick(Sender: TObject);
 var sort:string;
