@@ -38,6 +38,11 @@ type
     edtBoardnumber: TEdit;
     Boardnumber: TLabel;
     btnUpdate: TButton;
+    edtDeleteFirst: TEdit;
+    edtDeleteLast: TEdit;
+    btnDelete: TButton;
+    Label7: TLabel;
+    BtnMatchReport: TButton;
     procedure btnSortClick(Sender: TObject);
     procedure btnReportClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -45,6 +50,8 @@ type
     procedure btnResetClick(Sender: TObject);
     procedure btnMatchClick(Sender: TObject);
     procedure btnUpdateClick(Sender: TObject);
+    procedure btnDeleteClick(Sender: TObject);
+    procedure BtnMatchReportClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,6 +64,19 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFOrganiser.btnDeleteClick(Sender: TObject);
+var firstname,lastname:string;
+begin
+firstname:=edtDeleteFirst.Text;
+lastname:=edtDeleteLast.Text;
+with dmchess do
+ if tblregistration.Locate('first_name',firstname,[]) = TRUE and tblregistration.Locate('last_name',lastname,[]) then
+  begin
+   tblregistration.Delete;
+   showmessage('Record deleted');
+  end;
+end;
 
 procedure TFOrganiser.btnFilterClick(Sender: TObject);
 var search:string;
@@ -75,6 +95,24 @@ firstNamewhite:=inputbox('Name','Please type in the First name of the player on 
 lastnamewhite:=inputbox('Name','Please type in the Lastname of the player on White','');
 firstnameblack:=inputbox('Name','Please type in the First name of the player on Black','');
 lastnameblack:=inputbox('Name','Please type in the Last name of the player on Black','');
+end;
+
+procedure TFOrganiser.BtnMatchReportClick(Sender: TObject);
+var score:string;
+    name:array of string;
+    num,slength:integer;
+begin
+num:=0;
+WHILE NOT dmchess.tblregistration.Eof DO
+begin
+inc(num);
+if dmchess.tblregistration['wins']=1 then
+name[num]:=dmchess.tblregistration['First_name'];
+
+end;
+slength:=length(name);
+showmessage(inttostr(slength));
+
 end;
 
 procedure TFOrganiser.btnReportClick(Sender: TObject);
@@ -132,24 +170,87 @@ dmChess.tblregistration.Sort:=sort
 end;
 
 procedure TFOrganiser.btnUpdateClick(Sender: TObject);
-var winner:string;
-    roundnum,boardnum:integer;
+var roundnum,boardnum,winner:string;
+
 begin
 dmchess.matchresults.Insert;
-dmchess.matchresults['first_name_white']:=firstnamewhite;
-dmchess.matchresults['last_name_white']:=lastnamewhite;
-dmchess.matchresults['first_name_black']:=firstnameblack;
-dmchess.matchresults['last_name_black']:=lastnameblack;
-
-//if boardcolor.items='Black' then
-//dmchess.matchresults['scores_black']:=1;
-//if boardcolor.Items='White' then
-//dmchess.matchresults['scores_black']:=1;
-//if boardcolor.Items='Draw' then
+if dmchess.tblregistration.Locate('first_name',firstnamewhite,[]) then
+dmchess.matchresults['first_name_white']:=firstnamewhite
+else
 begin
+firstNamewhite:=inputbox('error','Please type in the First name of the player on White again','');
+exit;
+end;
+if dmchess.tblregistration.Locate('last_name',lastnamewhite,[]) then
+dmchess.matchresults['last_name_white']:=lastnamewhite
+else
+begin
+lastnamewhite:=inputbox('Error','Please type in the Lastname of the player on White again','');
+exit;
+end;
+if dmchess.tblregistration.Locate('first_name',firstnameblack,[]) then
+dmchess.matchresults['first_name_black']:=firstnameblack
+else
+begin
+firstnameblack:=inputbox('Error','Please type in the Firstname of the player on Black again','');
+exit;
+end;
+if dmchess.tblregistration.Locate('last_name',lastnameblack,[]) then
+dmchess.matchresults['last_name_black']:=lastnameblack
+else
+begin
+firstnameblack:=inputbox('Error','Please type in the Lastname of the player on Black again','');
+exit;
+end;
+if boardcolor.ItemIndex=-1 then
+showmessage('Please select the result of the match');
+if boardcolor.ItemIndex=0 then
+begin
+dmchess.matchresults['scores_black']:=1;
+dmchess.matchresults['scores_white']:=0;
+if dmchess.tblregistration.Locate('First_name',Firstnameblack,[]) and dmchess.tblregistration.Locate('Last_name',Lastnameblack,[]) then
+  begin
+  dmchess.tblregistration.Edit;
+  dmchess.tblregistration['wins']:=dmchess.tblregistration['wins']+1;
+  dmchess.tblregistration.Post;
+if dmchess.tblregistration.Locate('First_name',Firstnamewhite,[]) and dmchess.tblregistration.Locate('Last_name',Lastnamewhite,[])then
+   dmchess.tblregistration.Edit;
+  dmchess.tblregistration['loses']:=dmchess.tblregistration['loses']+1;
+  dmchess.tblregistration.Post;
+  end;
+end;
+if boardcolor.ItemIndex=1 then
+dmchess.matchresults['scores_white']:=1;
+dmchess.matchresults['scores_black']:=0;
+if dmchess.tblregistration.Locate('First_name',Firstnamewhite,[]) and dmchess.tblregistration.Locate('Last_name',Lastnamewhite,[]) then
+  begin
+  dmchess.tblregistration.Edit;
+  dmchess.tblregistration['wins']:=dmchess.tblregistration['wins']+1;
+  dmchess.tblregistration.Post;
+if dmchess.tblregistration.Locate('First_name',Firstnameblack,[]) and dmchess.tblregistration.Locate('Last_name',Lastnameblack,[])then
+   dmchess.tblregistration.Edit;
+  dmchess.tblregistration['loses']:=dmchess.tblregistration['loses']+1;
+  dmchess.tblregistration.Post;
+  end;
+if boardcolor.Itemindex=2 then
+begin
+dmchess.matchresults['scores_white']:=0.5;
 dmchess.matchresults['scores_black']:=0.5;
-dmchess.matchresults['scores_black']:=0.5;
-end
+
+if dmchess.tblregistration.Locate('First_name',Firstnamewhite,[]) and dmchess.tblregistration.Locate('Last_name',Lastnamewhite,[]) then
+  begin
+  dmchess.tblregistration.Edit;
+  dmchess.tblregistration['draws']:=dmchess.tblregistration['draws']+1;
+  dmchess.tblregistration.Post;
+if dmchess.tblregistration.Locate('First_name',Firstnameblack,[]) and dmchess.tblregistration.Locate('Last_name',Lastnameblack,[])then
+   dmchess.tblregistration.Edit;
+  dmchess.tblregistration['draws']:=dmchess.tblregistration['draws']+1;
+  dmchess.tblregistration.Post;
+end;
+end;
+dmchess.matchresults['round_number']:=edtround.Text;
+dmchess.matchresults['board_number']:=edtboardnumber.Text;
+dmchess.matchresults.Post;
 
 
 

@@ -82,6 +82,13 @@ object FOrganiser: TFOrganiser
     Height = 13
     Caption = 'Board Number'
   end
+  object Label7: TLabel
+    Left = 552
+    Top = 168
+    Width = 35
+    Height = 13
+    Caption = 'Delete:'
+  end
   object DBregestration: TDBGrid
     Left = 8
     Top = 33
@@ -405,5 +412,41 @@ object FOrganiser: TFOrganiser
     Caption = 'Update DB'
     TabOrder = 21
     OnClick = btnUpdateClick
+  end
+  object edtDeleteFirst: TEdit
+    Left = 520
+    Top = 185
+    Width = 97
+    Height = 21
+    Hint = 'James'
+    TabOrder = 22
+    Text = 'edtDeleteFirst'
+  end
+  object edtDeleteLast: TEdit
+    Left = 623
+    Top = 185
+    Width = 98
+    Height = 21
+    Hint = 'Easson'
+    TabOrder = 23
+    Text = 'edtDeleteLast'
+  end
+  object btnDelete: TButton
+    Left = 576
+    Top = 208
+    Width = 75
+    Height = 25
+    Caption = 'Delete Record'
+    TabOrder = 24
+    OnClick = btnDeleteClick
+  end
+  object BtnMatchReport: TButton
+    Left = 672
+    Top = 443
+    Width = 139
+    Height = 25
+    Caption = 'Generate match results'
+    TabOrder = 25
+    OnClick = BtnMatchReportClick
   end
 end

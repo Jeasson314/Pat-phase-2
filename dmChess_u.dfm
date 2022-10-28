@@ -5,7 +5,8 @@ object dmchess: Tdmchess
   object ConChess: TADOConnection
     Connected = True
     ConnectionString = 
-      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=DBchess.mdb;Mode=Re' +
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\James Eass' +
+      'on\Documents\RAD Studio\Projects\pat phase 2\DBchess.mdb;Mode=Re' +
       'adWrite;Persist Security Info=False;Jet OLEDB:System database=""' +
       ';Jet OLEDB:Registry Path="";Jet OLEDB:Database Password="";Jet O' +
       'LEDB:Engine Type=5;Jet OLEDB:Database Locking Mode=1;Jet OLEDB:G' +
@@ -62,6 +63,7 @@ object dmchess: Tdmchess
     Top = 184
   end
   object reportgen: TQuery
+    Filtered = True
     DataSource = Dsregest
     Left = 200
     Top = 280
@@ -69,7 +71,7 @@ object dmchess: Tdmchess
   object RegistrationDB: TADOQuery
     Connection = ConChess
     Parameters = <>
-    Left = 128
-    Top = 248
+    Left = 104
+    Top = 240
   end
 end
