@@ -70,17 +70,17 @@ end;
 
 procedure TForm4.btnloginClick(Sender: TObject);
 begin
- login.Show //clicks opens login form
+ login.Show
 end;
 
 procedure TForm4.btnOrganiserClick(Sender: TObject);
 begin
-fOrganiser.show;  //opens organiser form
+fOrganiser.show;
 end;
 
 procedure TForm4.btnParticipantClick(Sender: TObject);
 begin
-participant_form.show;//opens the participant format
+participant_form.show;
 end;
 
 procedure TForm4.encryption(password: string);

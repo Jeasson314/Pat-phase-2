@@ -43,7 +43,6 @@ type
     btnDelete: TButton;
     Label7: TLabel;
     BtnMatchReport: TButton;
-    Label8: TLabel;
     procedure btnSortClick(Sender: TObject);
     procedure btnReportClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -73,8 +72,8 @@ firstname:=edtDeleteFirst.Text;
 lastname:=edtDeleteLast.Text;
 with dmchess do
  if tblregistration.Locate('first_name',firstname,[]) = TRUE and tblregistration.Locate('last_name',lastname,[]) then
-  begin      //finds the reocrd with the request fist and last name
-   tblregistration.Delete;//delets the records
+  begin
+   tblregistration.Delete;
    showmessage('Record deleted');
   end;
 end;
@@ -84,7 +83,7 @@ var search:string;
 begin
 search:=edtsearch.Text;
 with dmchess do
-dmChess.matchresults.Filtered:=false; //filters for the requested names of the user
+dmChess.matchresults.Filtered:=false;
 dmChess.matchresults.Filter:='first_name_white=' + quotedstr(search)+' or '+'first_name_black=' + quotedstr(search);
 dmChess.matchresults.Filtered:=true;
 end;
@@ -92,7 +91,7 @@ end;
 procedure TFOrganiser.btnMatchClick(Sender: TObject);
 
 begin
-firstNamewhite:=inputbox('Name','Please type in the First name of the player on White','');//gathers the participant of thematch
+firstNamewhite:=inputbox('Name','Please type in the First name of the player on White','');
 lastnamewhite:=inputbox('Name','Please type in the Lastname of the player on White','');
 firstnameblack:=inputbox('Name','Please type in the First name of the player on Black','');
 lastnameblack:=inputbox('Name','Please type in the Last name of the player on Black','');
@@ -106,12 +105,11 @@ var score:string;
 begin
 assignfile(scorereport,'.\Reports\Scores.txt');
 rewrite(scorereport);
-writeln(scorereport,'First name'+'  Last name'+'    Scores');//assign file
 dmChess.tblregistration.First;
 loop:=8;
 while loop<15 do
 begin
-if dmChess.tblregistration.locate('ID',loop,[]) then  //generates the scores and inputs into files
+if dmChess.tblregistration.locate('ID',loop,[]) then
    begin
    line:=dmChess.tblregistration['first_name'];
    line:=line+#9+dmChess.tblregistration['last_name'];
@@ -135,7 +133,7 @@ begin
  AssignFile(report,'.\Reports\Report.txt');
  ReWrite(report);
 
- if firstnamecheck.Checked then sHeader := sHeader + 'First Name' + #9;//Puts the headers into the file if they requested that column
+ if firstnamecheck.Checked then sHeader := sHeader + 'First Name' + #9;
  if lastnamecheck.Checked then sHeader := sHeader + 'Last Name' + #9;
  if Birthday.Checked then sHeader := sHeader + 'Birthday' + #9 + #9;
  if Members.Checked then sHeader := sHeader + 'Members' + #9 ;
@@ -149,7 +147,7 @@ dmChess.tblregistration.First;
 while not dmChess.tblRegistration.Eof do
 BEGIN
 sline:='';
- if firstnamecheck.Checked then sLine := sLine + dmChess.tblRegistration['first_name'] + #9 + #9;     //checks of the user requested that headers and generates the textfiles
+ if firstnamecheck.Checked then sLine := sLine + dmChess.tblRegistration['first_name'] + #9 + #9;
 
  if lastnamecheck.Checked then sLine := sLine + dmChess.tblRegistration['last_name'] + #9 + #9;
 
@@ -178,7 +176,7 @@ procedure TFOrganiser.btnSortClick(Sender: TObject);
 var sort:string;
 begin
 sort:=CBsort.Text;
-dmChess.tblregistration.Sort:=sort //Sorts the grid by the requested column
+dmChess.tblregistration.Sort:=sort
 end;
 
 procedure TFOrganiser.btnUpdateClick(Sender: TObject);
@@ -187,27 +185,27 @@ var roundnum,boardnum,winner:string;
 begin
 dmchess.matchresults.Insert;
 if dmchess.tblregistration.Locate('first_name',firstnamewhite,[]) then
-dmchess.matchresults['first_name_white']:=firstnamewhite //inputs the firstwhite into the db
+dmchess.matchresults['first_name_white']:=firstnamewhite
 else
 begin
 firstNamewhite:=inputbox('error','Please type in the First name of the player on White again','');
 exit;
 end;
-if dmchess.tblregistration.Locate('last_name',lastnamewhite,[]) then   //inputs the lastwhite into the db
+if dmchess.tblregistration.Locate('last_name',lastnamewhite,[]) then
 dmchess.matchresults['last_name_white']:=lastnamewhite
 else
 begin
 lastnamewhite:=inputbox('Error','Please type in the Lastname of the player on White again','');
 exit;
 end;
-if dmchess.tblregistration.Locate('first_name',firstnameblack,[]) then       //inputs the firstblack into the db
+if dmchess.tblregistration.Locate('first_name',firstnameblack,[]) then
 dmchess.matchresults['first_name_black']:=firstnameblack
 else
 begin
 firstnameblack:=inputbox('Error','Please type in the Firstname of the player on Black again','');
 exit;
 end;
-if dmchess.tblregistration.Locate('last_name',lastnameblack,[]) then  //inputs the lastblack into the db
+if dmchess.tblregistration.Locate('last_name',lastnameblack,[]) then
 dmchess.matchresults['last_name_black']:=lastnameblack
 else
 begin
@@ -216,7 +214,7 @@ exit;
 end;
 if boardcolor.ItemIndex=-1 then
 showmessage('Please select the result of the match');
-if boardcolor.ItemIndex=0 then    //edits all of the scores in the DB depending on the results
+if boardcolor.ItemIndex=0 then
 begin
 dmchess.matchresults['scores_black']:=1;
 dmchess.matchresults['scores_white']:=0;
@@ -249,7 +247,7 @@ begin
 dmchess.matchresults['scores_white']:=0.5;
 dmchess.matchresults['scores_black']:=0.5;
 
-if dmchess.tblregistration.Locate('First_name',Firstnamewhite,[]) and dmchess.tblregistration.Locate('Last_name',Lastnamewhite,[]) then //locates the record of the requested user and then edits the names
+if dmchess.tblregistration.Locate('First_name',Firstnamewhite,[]) and dmchess.tblregistration.Locate('Last_name',Lastnamewhite,[]) then
   begin
   dmchess.tblregistration.Edit;
   dmchess.tblregistration['draws']:=dmchess.tblregistration['draws']+1;
@@ -260,8 +258,8 @@ if dmchess.tblregistration.Locate('First_name',Firstnameblack,[]) and dmchess.tb
   dmchess.tblregistration.Post;
 end;
 end;
-dmchess.matchresults['round_number']:=edtround.Text; //edits the round number in tbl matches
-dmchess.matchresults['board_number']:=edtboardnumber.Text; //edits the board number in tbl matches
+dmchess.matchresults['round_number']:=edtround.Text;
+dmchess.matchresults['board_number']:=edtboardnumber.Text;
 dmchess.matchresults.Post;
 
 
@@ -270,12 +268,12 @@ end;
 
 procedure TFOrganiser.btnResetClick(Sender: TObject);
 begin
-dmChess.matchresults.Filtered:=false;//resets the table of the matchresults
+dmChess.matchresults.Filtered:=false;
 end;
 
 procedure TFOrganiser.FormCreate(Sender: TObject);
 begin
-dmchess.matchresults.Sort:='round_number DESC,board_number DESC';  //Default order of the matchresult table
+dmchess.matchresults.Sort:='round_number DESC,board_number DESC';
 end;
 
 end.

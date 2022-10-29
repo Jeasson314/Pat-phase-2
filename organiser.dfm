@@ -4,7 +4,7 @@ object FOrganiser: TFOrganiser
   Caption = 'FOrganiser'
   ClientHeight = 508
   ClientWidth = 874
-  Color = clBtnFace
+  Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -88,6 +88,19 @@ object FOrganiser: TFOrganiser
     Width = 35
     Height = 13
     Caption = 'Delete:'
+  end
+  object Label8: TLabel
+    Left = 721
+    Top = 239
+    Width = 145
+    Height = 23
+    Caption = 'Generate Scores:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
   end
   object DBregestration: TDBGrid
     Left = 8
@@ -441,10 +454,10 @@ object FOrganiser: TFOrganiser
     OnClick = btnDeleteClick
   end
   object BtnMatchReport: TButton
-    Left = 672
-    Top = 443
+    Left = 727
+    Top = 268
     Width = 139
-    Height = 25
+    Height = 37
     Caption = 'Generate match results'
     TabOrder = 25
     OnClick = BtnMatchReportClick

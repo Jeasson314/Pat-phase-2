@@ -23,11 +23,12 @@ type
     BtnUsername: TButton;
     btnBirthday: TButton;
     btnPassword: TButton;
+    procedure FormCreate(Sender: TObject);
     procedure BtnemailClick(Sender: TObject);
     procedure BtnUsernameClick(Sender: TObject);
     procedure btnBirthdayClick(Sender: TObject);
     procedure btnPasswordClick(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
+    procedure encryption();
   private
     { Private declarations }
   public
@@ -36,25 +37,25 @@ type
 
 var
   Participant_form: TParticipant_form;
-  password,sresult:string;
+
 implementation
 
 {$R *.dfm}
 
 procedure TParticipant_form.btnBirthdayClick(Sender: TObject);
-var comp,birthdaydate:tdatetime;
+var comp,birthdaydate:date;
     birthdayiscorrect:boolean;
 begin
-birthdayiscorrect:=true;
-birthdaydate:=dateof(dtpBirthday.Date);
+birthdayiscorrect=true;
+birthdaydate:=dateof(dtpBirthday.text);
 comp:=comparedate(today,birthdaydate);
-if comp<0 then               //checks if the inputed date occured before the current date
+if comp<0 then
 birthdayiscorrect:=false;
 if comp=0 then
 birthdayiscorrect:=false;
 
 if birthdayiscorrect=true then
- if dmchess.tblregistration.Locate('username',login.loginusername,[])then  //edit specific birthday in DB
+ if dmchess.tblregistration.Locate('username',login.loginusername,[])then
     begin
     dmchess.tblregistration.Edit;
     dmchess.tblregistration['birthday']:=birthdaydate;
@@ -66,47 +67,49 @@ end;
 
 procedure TParticipant_form.BtnemailClick(Sender: TObject);
 var email:string;
-    emailiscorrect:boolean;
 begin
-emailiscorrect:=true;
 email:=edtemail.Text;
-if  not pos('@',email)=0 then  //checks if it contains @
-emailiscorrect:=false;
-if not pos('.',email)=0 then  //checks if it contains .
-emailiscorrect:=false;
-if emailiscorrect=true then
-    if dmchess.tblregistration.Locate('username',login.loginusername,[]) then//edits the email in the db
+  if not pos('@',email)=0 then begin
+    if not pos('.',email)=0 then
+  begin
+  if dmchess.tblregistration.Locate('username',login.loginusername,[])then
     begin
     dmchess.tblregistration.Edit;
     dmchess.tblregistration['email']:=email;
     dmchess.tblregistration.Post;
-    showmessage('Record edited');
-    end;
+    end
+  end
+  else showmessage('Please input a valid email');
+  end
+  else showmessage('Please input a valid email');
 end;
 
 procedure TParticipant_form.btnPasswordClick(Sender: TObject);
-var passwordcheck:boolean;
-    vlength,loop,asciiNum:integer;
-    Npassword:string;
+var password,result:string;
+    passwordcheck:boolean;
 begin
 password:=edtPassword.Text;
-
-  vlength:=length(password);
-
-  for loop := 1 to vlength do  //encryption
+encryption();
+with dmChess do
+  begin
+  tblregistration.First;
+  while (not tblregistration.Eof) AND (passwordcheck =false) do
+  begin
+    if tblregistration['password']=result then
     begin
-    asciiNum :=ord(password[loop]);
-    Npassword:=Npassword +chr(asciiNum+vlength);
-    end;
-sresult:=Npassword;
+      messagedlg('Password already exist,please create a new one ',mtWarning,[mbOK],0);
+      passwordcheck:=true;
+      exit;
+    end
+  else tblregistration.Next;
+  end;
 
-  showmessage(sresult);
+  end;
 if dmChess.tblregistration.Locate('username',login.loginusername,[]) then
 begin
-dmChess.tblregistration.Edit;           //edits the password of the specifi user in the db
-dmChess.tblregistration['password']:=sresult;
+dmChess.tblregistration.Edit;
+dmChess.tblregistration['password']:=result;
 dmChess.tblregistration.Post;
-showmessage('Record edited');
 end;
 end;
 
@@ -114,29 +117,40 @@ procedure TParticipant_form.BtnUsernameClick(Sender: TObject);
 var username:string;
 begin
 username:=edtusername.Text;
-if dmchess.tblregistration.Locate('username',login.loginusername,[])then //locates the username record
+if dmchess.tblregistration.Locate('username',login.loginusername,[])then
     begin
     dmchess.tblregistration.Edit;
-    dmchess.tblregistration['username']:=username; //edits the username in db
+    dmchess.tblregistration['username']:=username;
     dmchess.tblregistration.Post;
-    showmessage('Record edited');
     end
 end;
 
+procedure TParticipant_form.encryption;
+var vlength,loop,asciiNum:integer;
+     Npassword:string;
+begin
+  vlength:=length(password);
 
-procedure TParticipant_form.FormActivate(Sender: TObject);
+  for loop := 1 to vlength do
+    begin
+    asciiNum :=ord(password[loop]);
+    Npassword:=Npassword +chr(asciiNum+vlength);
+    end;
+result:=Npassword;
+end;
+
+procedure TParticipant_form.FormCreate(Sender: TObject);
 var first_name,last_name:string;
 begin
-if (dmchess.tblregistration.Locate('username',login.loginusername,[])) then   //locates the user in the records
+WHILE (dmchess.tblregistration.Locate('username',login.loginusername,[])=true) do
 begin
-first_name:=dmchess.tblregistration['first_name']; //allocates the username record
+first_name:=dmchess.tblregistration['first_name'];
 last_name:=dmchess.tblregistration['last_name'];
 
 end;
-
 with dmChess do
 begin
-matchresults.Filtered:=false; //filters and shows the only matches that the user has perticipated in
+matchresults.Filtered:=false;
 matchresults.Filter:='(first_name_white= '+quotedstr(first_name)+' AND last_name_white= '+quotedstr(last_name)+')'+
 ' OR (first_name_black= '+quotedstr(first_name) +' AND last_name_black= '+quotedstr(last_name)+')';
 matchresults.Filtered:=true;

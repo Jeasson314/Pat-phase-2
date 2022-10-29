@@ -216,7 +216,7 @@ exit;
 end;
 if boardcolor.ItemIndex=-1 then
 showmessage('Please select the result of the match');
-if boardcolor.ItemIndex=0 then    //edits all of the scores in the DB depending on the results
+if boardcolor.ItemIndex=0 then
 begin
 dmchess.matchresults['scores_black']:=1;
 dmchess.matchresults['scores_white']:=0;
@@ -249,7 +249,7 @@ begin
 dmchess.matchresults['scores_white']:=0.5;
 dmchess.matchresults['scores_black']:=0.5;
 
-if dmchess.tblregistration.Locate('First_name',Firstnamewhite,[]) and dmchess.tblregistration.Locate('Last_name',Lastnamewhite,[]) then //locates the record of the requested user and then edits the names
+if dmchess.tblregistration.Locate('First_name',Firstnamewhite,[]) and dmchess.tblregistration.Locate('Last_name',Lastnamewhite,[]) then
   begin
   dmchess.tblregistration.Edit;
   dmchess.tblregistration['draws']:=dmchess.tblregistration['draws']+1;
@@ -260,8 +260,8 @@ if dmchess.tblregistration.Locate('First_name',Firstnameblack,[]) and dmchess.tb
   dmchess.tblregistration.Post;
 end;
 end;
-dmchess.matchresults['round_number']:=edtround.Text; //edits the round number in tbl matches
-dmchess.matchresults['board_number']:=edtboardnumber.Text; //edits the board number in tbl matches
+dmchess.matchresults['round_number']:=edtround.Text;
+dmchess.matchresults['board_number']:=edtboardnumber.Text;
 dmchess.matchresults.Post;
 
 
@@ -270,12 +270,12 @@ end;
 
 procedure TFOrganiser.btnResetClick(Sender: TObject);
 begin
-dmChess.matchresults.Filtered:=false;//resets the table of the matchresults
+dmChess.matchresults.Filtered:=false;
 end;
 
 procedure TFOrganiser.FormCreate(Sender: TObject);
 begin
-dmchess.matchresults.Sort:='round_number DESC,board_number DESC';  //Default order of the matchresult table
+dmchess.matchresults.Sort:='round_number DESC,board_number DESC';
 end;
 
 end.

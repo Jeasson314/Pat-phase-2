@@ -39,7 +39,7 @@ var storage:textfile;
     username:string;
     usernamecheck:boolean;
 begin
-username:=inputbox('Username','Please input username','');
+username:=inputbox('Username','Please input username','')
 usernamecheck:=false;
 with dmChess do
   begin

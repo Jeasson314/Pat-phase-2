@@ -4,7 +4,7 @@ object Participant_form: TParticipant_form
   Caption = 'Participant_form'
   ClientHeight = 363
   ClientWidth = 699
-  Color = clGradientActiveCaption
+  Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

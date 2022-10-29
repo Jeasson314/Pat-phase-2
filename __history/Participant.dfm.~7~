@@ -4,14 +4,14 @@ object Participant_form: TParticipant_form
   Caption = 'Participant_form'
   ClientHeight = 363
   ClientWidth = 699
-  Color = clGradientActiveCaption
+  Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnActivate = FormActivate
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -159,7 +159,6 @@ object Participant_form: TParticipant_form
     Top = 280
     Width = 121
     Height = 21
-    PasswordChar = '*'
     TabOrder = 4
     Text = 'edtPassword'
   end
@@ -184,9 +183,9 @@ object Participant_form: TParticipant_form
     OnClick = BtnUsernameClick
   end
   object btnBirthday: TButton
-    Left = 328
+    Left = 344
     Top = 307
-    Width = 89
+    Width = 75
     Height = 25
     Caption = 'Update Birthday'
     TabOrder = 7

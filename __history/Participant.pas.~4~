@@ -1,0 +1,91 @@
+unit Participant;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,dmchess_u, Grids, DBGrids,login_form, StdCtrls, ComCtrls;
+
+type
+  TParticipant_form = class(TForm)
+    DBGrid1: TDBGrid;
+    edtemail: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    EdtUsername: TEdit;
+    dtpBirthday: TDateTimePicker;
+    edtPassword: TEdit;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Btnemail: TButton;
+    BtnUsername: TButton;
+    btnBirthday: TButton;
+    btnPassword: TButton;
+    procedure FormCreate(Sender: TObject);
+    procedure BtnemailClick(Sender: TObject);
+    procedure BtnUsernameClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Participant_form: TParticipant_form;
+
+implementation
+
+{$R *.dfm}
+
+procedure TParticipant_form.BtnemailClick(Sender: TObject);
+var email:string;
+begin
+email:=edtemail.Text;
+  if not pos('@',email)=0 then begin
+    if not pos('.',email)=0 then
+  begin
+  if dmchess.tblregistration.Locate('username',login.loginusername,[])then
+    begin
+    dmchess.tblregistration.Edit;
+    dmchess.tblregistration['email']:=email;
+    dmchess.tblregistration.Post;
+    end
+  end
+  else showmessage('Please input a valid email');
+  end
+  else showmessage('Please input a valid email');
+end;
+
+procedure TParticipant_form.BtnUsernameClick(Sender: TObject);
+var username:string;
+begin
+username:=edtusername.Text;
+if dmchess.tblregistration.Locate('username',login.loginusername,[])then
+    begin
+    dmchess.tblregistration.Edit;
+    dmchess.tblregistration['username']:=username;
+    dmchess.tblregistration.Post;
+    end
+end;
+
+procedure TParticipant_form.FormCreate(Sender: TObject);
+var first_name,last_name:string;
+begin
+WHILE (dmchess.tblregistration.Locate('username',login.loginusername,[])=true) do
+begin
+first_name:=dmchess.tblregistration['first_name'];
+last_name:=dmchess.tblregistration['last_name'];
+
+end;
+with dmChess do
+begin
+matchresults.Filtered:=false;
+matchresults.Filter:='(first_name_white= '+quotedstr(first_name)+' AND last_name_white= '+quotedstr(last_name)+')'+
+' OR (first_name_black= '+quotedstr(first_name) +' AND last_name_black= '+quotedstr(last_name)+')';
+matchresults.Filtered:=true;
+end;
+
+end;
+end.
