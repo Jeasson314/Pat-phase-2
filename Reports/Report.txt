@@ -1,9 +1,8 @@
-First Name	Birthday		Wins	
-Jeremy		2004/06/16		0	
-James		2005/07/01		0	
-James		2008/11/19		0	
-Jeff		2009/06/22		2	
-John		2001/11/14		1	
-Sarah		2005/06/11		1	
-Danica		2005/08/25		1	
-Julies		2004/06/16		1	
+First Name	Last Name	Birthday		
+James		Easson		2005/07/01		
+James		Blom		2008/11/19		
+Jeff		Da vinci		2009/06/22		
+John		Marc		2001/11/14		
+Sarah		Hicks		2005/06/11		
+Danica		Thom		2005/08/25		
+Julies		Ceaser		2004/06/16		

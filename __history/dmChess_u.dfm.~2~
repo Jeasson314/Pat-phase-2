@@ -5,7 +5,8 @@ object dmchess: Tdmchess
   object ConChess: TADOConnection
     Connected = True
     ConnectionString = 
-      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=DBchess.mdb;Mode=Re' +
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\James Eass' +
+      'on\Documents\RAD Studio\Projects\pat phase 2\DBchess.mdb;Mode=Re' +
       'adWrite;Persist Security Info=False;Jet OLEDB:System database=""' +
       ';Jet OLEDB:Registry Path="";Jet OLEDB:Database Password="";Jet O' +
       'LEDB:Engine Type=5;Jet OLEDB:Database Locking Mode=1;Jet OLEDB:G' +
